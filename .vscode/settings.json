@@ -1,6 +1,3 @@
 {
-    "rust-analyzer.linkedProjects": [
-        "c:\\Users\\bavja\\repos\\rust-test-course\\modules\\HelloWorld\\HelloWorld\\exercise\\Cargo.toml",
-        "c:\\Users\\bavja\\repos\\rust-test-course\\modules\\HelloWorld\\Adder\\exercise\\Cargo.toml"
-    ]
+ 
 }
