@@ -4,7 +4,7 @@ set(CMAKE_CXX_STANDARD_REQUIRED ON)
 
 add_executable(step1_helloworld exercise/main.cpp)
 add_executable(step1_helloworld_tests "${CMAKE_CURRENT_LIST_DIR}/tests/tests.cpp")
-target_link_libraries(step1_mynumber_tests GTest::gtest_main)
+target_link_libraries(step1_helloworld_tests GTest::gtest_main)
 
 
 add_dependencies(step1_helloworld_tests step1_helloworld)
