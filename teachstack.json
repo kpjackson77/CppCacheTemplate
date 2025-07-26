@@ -1,8 +1,8 @@
 {
   "languages": [
     {
-      "language": "rust",
-      "version": "1.85.0"
+      "language": "C++",
+      "version": "C++ 20"
     }
   ],
 
@@ -14,7 +14,7 @@
         {
           "name": "Hello World",
           "dir": "HelloWorld",
-          "initialFiles": ["src/main.rs"],
+          "initialFiles": ["src/main.cpp"],
           "tests": [
             {
               "test": "it_prints_hello_world",
@@ -25,26 +25,7 @@
           "scripts": [
             {
               "language": "rust",
-              "script": "main.rs",
-              "args": []
-            }
-          ]
-        },
-        {
-          "name": "Adder",
-          "dir": "Adder",
-          "initialFiles": ["src/main.rs", "src/adder/adder.rs"],
-          "tests": [
-            {
-              "test": "it_adds_two_numbers",
-              "name": "Adds two integers",
-              "description": "Ensure the add function adds two integers and returns the result"
-            }
-          ],
-          "scripts": [
-            {
-              "language": "rust",
-              "script": "main.rs",
+              "script": "main.cpp",
               "args": []
             }
           ]
