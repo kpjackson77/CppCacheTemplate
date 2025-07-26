@@ -1,11 +1,9 @@
 {
   "languages": [
     {
-      "language": "C++",
-      "version": "C++ 20"
+      "language": "cpp"
     }
   ],
-
   "modules": [
     {
       "name": "Hello World",
@@ -13,20 +11,22 @@
       "exercises": [
         {
           "name": "Hello World",
-          "dir": "HelloWorld",
-          "initialFiles": ["src/main.cpp"],
+          "dir": "step1_helloworld",
+          "initialFiles": ["main.cpp"],
           "tests": [
             {
-              "test": "it_prints_hello_world",
+              "test": "HelloTest.HelloWorld",
               "name": "Prints hello world",
               "description": "Ensure the program prints hello world when run"
             }
           ],
+          "options": [
+            { "language": "cpp", "testTarget": "step1_helloworld_tests" }
+          ],
           "scripts": [
             {
-              "language": "rust",
-              "script": "main.cpp",
-              "args": []
+              "language": "cpp",
+              "target": "step1_helloworld_tests"
             }
           ]
         }
