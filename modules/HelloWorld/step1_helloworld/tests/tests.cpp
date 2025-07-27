@@ -1,27 +1,38 @@
 #include <algorithm>
 #include <cctype>
 #include <gtest/gtest.h>
-
+#include <sstream>
+namespace local
+{
+#include "../exercise/main.cpp"
+}
 std::string getStdoutFromCommand(const std::string &command) {
   std::string result = "";
-  char buffer[128];
+  //char buffer[128];
 
-#ifdef _WIN32
-  std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(command.c_str(), "r"),
-                                                 _pclose);
-#else
-  std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(command.c_str(), "r"),
-                                                pclose);
-#endif
+// #ifdef _WIN32
+//   std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(command.c_str(), "r"),
+//                                                  _pclose);
+// #else
+//   std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(command.c_str(), "r"),
+//                                                 pclose);
+// #endif
 
-  if (!pipe) {
-    throw std::runtime_error("popen() failed!");
-  }
+//   if (!pipe) {
+//     throw std::runtime_error("popen() failed!");
+//   }
 
-  while (fgets(buffer, sizeof(buffer), pipe.get()) != nullptr) {
-    result += buffer;
-  }
+//   while (fgets(buffer, sizeof(buffer), pipe.get()) != nullptr) {
+//     result += buffer;
+//   }
+std::stringstream buffer;
+        std::streambuf *oldCout = std::cout.rdbuf(buffer.rdbuf()); // Redirect cout
 
+        local::main();
+
+        std::cout.rdbuf(oldCout); // Restore original cout
+        result = buffer.str();
+  
   return result;
 }
 
