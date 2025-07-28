@@ -29,6 +29,37 @@
               "target": "step1_helloworld_tests"
             }
           ]
+        },
+        {
+          "name": "Final Cache",
+          "dir": "final_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.final_cache",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers"
+            },
+            {
+              "test": "CacheTests.test_successs",
+              "name": "Just a check",
+              "description": "Check that the test framework is working"
+            },
+            {
+              "test": "CacheTests.test_fail",
+              "name": "Just a check",
+              "description": "Check that the test framework is working"
+            }
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "final_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "final_cache_tests"
+            }
+          ]
         }
       ]
     }

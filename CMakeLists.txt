@@ -15,7 +15,8 @@ FetchContent_MakeAvailable(googletest)
 include(GoogleTest)
 enable_testing()
 
-## add_library(utilities modules/lib/utilities.cpp)
-## target_include_directories(utilities PUBLIC include)
+add_library(utilities modules/lib/utilities.cpp)
+target_include_directories(utilities PUBLIC include)
 
 add_subdirectory(modules/HelloWorld/step1_helloworld)
+add_subdirectory(modules/HelloWorld/final_cache)
