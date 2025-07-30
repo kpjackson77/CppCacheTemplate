@@ -2,6 +2,7 @@
 #include <cctype>
 #include <gtest/gtest.h>
 #include <sstream>
+#include <fstream>
 #include <algorithm>
 #include "../../../include/utilities.h"
 namespace local
@@ -54,10 +55,109 @@ std::string trimRight(const std::string &str) {
 std::string trim(const std::string &str) { return trimRight(trimLeft(str)); }
 
 namespace Test {
+  TEST(CacheTests, test_write_to_file)
+    {
+      
+     // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt");
+     std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output.txt");
+      if (!ofs) {
+        FAIL() << "Failed to open output file.";
+      }
+      ofs << "Just a test!" << std::endl;
+      ofs.close();
+    }
+  TEST(CacheTests, test_too_many_items)
+    {
+      using local::caches::PowerCache;
+      using local::caches::CubePolicy;
+      using local::caches::SquarePolicy;
+      {
+          PowerCache<long,SquarePolicy,2> sc{};
+          ASSERT_EQ( sc.get_power(0).value_or(-1), 0);
+            
+          ASSERT_EQ( sc.get_power(1).value_or(-1), 1);
+             
+          EXPECT_THROW( sc.get_power(11).value_or(-1), std::out_of_range);
+            
+      }
+    }
+    TEST(CacheTests, test_cube_cache)
+    {
+      using local::caches::PowerCache;
+      using local::caches::CubePolicy;
+      using local::caches::SquarePolicy;
+      {
+        try {
+          PowerCache<long,CubePolicy,1000> sc{};
+          ASSERT_EQ( sc.get_power(3).value_or(-1), 27)
+              << "Expected square of 3 to be 27, but got: "
+              << sc.get_power(3).value_or(-1);
+          ASSERT_EQ( sc.get_power(11).value_or(-1),1331)
+              << "Expected square of 11 to be 1331, but got: "
+              << sc.get_power(11).value_or(-1);
+        }
+        catch (const std::exception &e) {
+          std::cerr << "Exception: " << e.what() << std::endl;
+        }
+      }
+    }
+    TEST(CacheTests, test_square_cache)
+    {
+      using local::caches::PowerCache;
+      using local::caches::CubePolicy;
+      using local::caches::SquarePolicy;
+      {
+        try {
+          PowerCache<long,SquarePolicy,1000> sc{};
+          ASSERT_EQ( sc.get_power(3).value_or(-1), 9)
+              << "Expected square of 3 to be 9, but got: "
+              << sc.get_power(3).value_or(-1);
+          ASSERT_EQ( sc.get_power(11).value_or(-1),121)
+              << "Expected square of 11 to be 121, but got: "
+              << sc.get_power(11).value_or(-1);
+        }
+        catch (const std::exception &e) {
+          std::cerr << "Exception: " << e.what() << std::endl;
+        }
+      }
+    }
+  TEST(CacheTests, test_power_results)
+    {
+        using std::string_literals::operator"" s;
+        //std::string data_in{"i\nAAA\n123\no\n\ni\nBBB\n234\no\nx"s};
+        std::vector data_parts = utilities::split("9\nSquare of 3:\n9\nSquare of 12:\n144\nSquare of 3:\n9\n", "\n");
+        utilities::run_sequence(local::main, [=](std::istringstream &buffer)
+                                {
+                                    //buffer.str(data_in);
+                                    buffer.clear(); },
+                                [=](const std::string &output)
+                                {
+                                    std::vector<std::string> data_out = std::vector{""s};
+                                    for (auto item : data_parts)
+                                    {
+                                        data_out.push_back(item);
+                                    }
+                                    //data_out.push_back("exiting");
+                                    for (auto item : data_out)
+                                    {
+                                        ASSERT_TRUE(utilities::contains_string(output, item))
+                                             << "Program output should contain the item:\n"
+                                             << item << "\n" << "Actual output:\n"
+                                             << output;
+                                    }
+                                    // ASSERT_FALSE(true) << output << std::endl;
+                                });
+  }
   TEST(CacheTests, test_success) {
     ASSERT_NE(1, 2) << "This test should succeed.";
   }
   TEST(CacheTests, test_fail) {
+    ASSERT_NE(1, 1) << "This test shouldfail.";
+  }
+    TEST(CacheTests, test_success2) {
+    ASSERT_NE(1, 2) << "This test should succeed.";
+  }
+  TEST(CacheTests, test_fail2) {
     ASSERT_NE(1, 1) << "This test shouldfail.";
   }
   TEST(CacheTests, final_cache) {
@@ -76,5 +176,5 @@ namespace Test {
   //     << "Program output should contain 'Square of 3: 9'. Actual output:\n"
   //     << output;
   // ASSERT_EQ(1,2);
-}
+  }
 } // namespace Test

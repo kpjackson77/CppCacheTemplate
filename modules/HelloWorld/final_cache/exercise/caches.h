@@ -3,6 +3,7 @@
 #include <vector>
 #include <map>
 #include <memory>
+#include <optional>
 namespace caches
 {
 	template<typename T, size_t SIZE = 10000>
@@ -19,11 +20,11 @@ namespace caches
 			return temp;
 		}
 	};
-	template<typename T>	class SquarePolicy {
+	template<typename T> class SquarePolicy {
 	public:
 		static T get_power(T val) { return val * val; }
 	};
-	template<typename T>	class CubePolicy {
+	template<typename T> class CubePolicy {
 	public:
 		static T get_power(T val) { return val * val * val; }
 	};
@@ -42,8 +43,9 @@ namespace caches
 			//	_data.push_back(nullptr);
 			//}
 		}
-		T get_power(size_t ind) const {
+		std::optional<T> get_power(size_t ind) const {
 			//if (ind >= sizeof(_data) / sizeof(T*))throw std::out_of_range{ "Too many items" };
+			if (ind >= SIZE) throw std::out_of_range{ "Outside range for data!" };
 			//if (_data[ind] == nullptr) {
 			if( _data.find(ind) == _data.end()){
 				//const_cast<int&>(_data[ind]) = ind * ind;

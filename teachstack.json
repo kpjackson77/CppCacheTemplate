@@ -33,20 +33,55 @@
         {
           "name": "Final Cache",
           "dir": "final_cache",
-          "initialFiles": ["main.cpp", "caches.h"],
+          "initialFiles": ["main.cpp", "caches.h","test_output.txt"],
           "tests": [
+            {
+              "test": "CacheTests.test_write_to_file",
+              "name": "Check write to file",
+              "description": "Ensure write to file"
+            },
+            {
+              "test": "CacheTests.test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items"
+            },
+            {
+              "test": "CacheTests.test_cube_cache",
+              "name": "Check cube cache",
+              "description": "Ensure cache works with cube power policy"
+            },
+            {
+              "test": "CacheTests.test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy"
+            },
+            {
+              "test": "CacheTests.test_power_results",
+              "name": "Check computation of Powers",
+              "description": "Ensure the program prints multiple powers of numbers"
+            },
             {
               "test": "CacheTests.final_cache",
               "name": "Prints powers",
               "description": "Ensure the program prints multiple powers of numbers"
             },
             {
-              "test": "CacheTests.test_successs",
+              "test": "CacheTests.test_success",
               "name": "Just a check",
               "description": "Check that the test framework is working"
             },
             {
               "test": "CacheTests.test_fail",
+              "name": "Just a check",
+              "description": "Check that the test framework is working"
+            },
+            {
+              "test": "CacheTests.test_success2",
+              "name": "Just a check",
+              "description": "Check that the test framework is working"
+            },
+            {
+              "test": "CacheTests.test_fail2",
               "name": "Just a check",
               "description": "Check that the test framework is working"
             }
