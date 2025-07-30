@@ -36,7 +36,17 @@
           "initialFiles": ["main.cpp", "caches.h","test_output.txt"],
           "tests": [
             {
+              "test": "CacheTests.copy_from_input_to_output",
+              "name": "Check copy between files",
+              "description": "Ensure copy between input and output files works"
+            },
+            {
               "test": "CacheTests.test_write_to_file",
+              "name": "Check write to file",
+              "description": "Ensure write to file"
+            },
+            {
+              "test": "CacheTests.test_write_to_file2",
               "name": "Check write to file",
               "description": "Ensure write to file"
             },
