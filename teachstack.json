@@ -33,7 +33,7 @@
         {
           "name": "Final Cache",
           "dir": "final_cache",
-          "initialFiles": ["main.cpp", "caches.h","test_output.txt"],
+          "initialFiles": ["test_output.txt","test_output2.txt","test_input.txt","main.cpp", "caches.h"],
           "tests": [
             {
               "test": "CacheTests.copy_from_input_to_output",
