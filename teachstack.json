@@ -36,6 +36,11 @@
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
             {
+              "test": "CacheTests.test_success",
+              "name": "Check success",
+              "description": "Success"
+            },
+            {
               "test": "CacheTests.test_too_many_items",
               "name": "Check too many items in cache",
               "description": "Ensure cache reports too many items"

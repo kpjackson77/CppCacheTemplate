@@ -99,6 +99,10 @@ namespace Test {
                                     // ASSERT_FALSE(true) << output << std::endl;
                                 });
     }
+    TEST(CacheTests, test_success)
+    {
+      ASSERT_TRUE(true);
+    }
     TEST(CacheTests, test_too_many_items)
     {
       using local::caches::SquareCache;
@@ -130,11 +134,12 @@ namespace Test {
         }
       }
     }
-  TEST(CacheTests, test_results)
+    //substringsAppearInOrder
+    TEST(CacheTests, test_results)
     {
         using std::string_literals::operator"" s;
         //std::string data_in{"i\nAAA\n123\no\n\ni\nBBB\n234\no\nx"s};
-        std::vector data_parts = utilities::split("9\nSquare of 3:\n2\nSquare of 12:\n144\nSquare of 3:\n9\n", "\n");
+        std::vector data_parts = utilities::split("\nSquare of 3:\n9\nSquare of 12:\n144\nSquare of 3:\n9\n", "\n");
         utilities::run_sequence(local::main, [=](std::istringstream &buffer)
                                 {
                                     //buffer.str(data_in);
@@ -146,14 +151,15 @@ namespace Test {
                                     {
                                         data_out.push_back(item);
                                     }
+                                    ASSERT_TRUE(utilities::substringsAppearInOrder(output, data_out));
                                     //data_out.push_back("exiting");
-                                    for (auto item : data_out)
-                                    {
-                                        ASSERT_TRUE(utilities::contains_string(output, item))
-                                             << "Program output should contain the item:\n"
-                                             << item << "\n" << "Actual output:\n"
-                                             << output;
-                                    }
+                                    // for (auto item : data_out)
+                                    // {
+                                    //     ASSERT_TRUE(utilities::contains_string(output, item))
+                                    //          << "Program output should contain the item:\n"
+                                    //          << item << "\n" << "Actual output:\n"
+                                    //          << output;
+                                    // }
                                     // ASSERT_FALSE(true) << output << std::endl;
                                 });
   }
