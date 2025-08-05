@@ -31,6 +31,37 @@
           ]
         },
         {
+          "name": "Step1Cache",
+          "dir": "step1_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items"
+            },
+            {
+              "test": "CacheTests.test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy"
+            },
+            {
+              "test": "CacheTests.test_results",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers"
+            }
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "step1_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "step1_cache_tests"
+            }
+          ]
+        },
+        {
           "name": "Final Cache",
           "dir": "final_cache",
           "initialFiles": ["test_output.txt","test_output2.txt","test_input.txt","main.cpp", "caches.h"],
