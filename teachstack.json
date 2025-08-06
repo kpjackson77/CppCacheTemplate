@@ -138,6 +138,90 @@
           ]
         },
         {
+          "skippable": true,
+          "name": "Step4Cache",
+          "dir": "step4_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.step4_test_memory_cache",
+              "name": "Memory Pool",
+              "description": "Memory pool returns memory addresses."
+            },
+            {
+              "test": "CacheTests.step4_test_size_for_shared_ptr",
+              "name": "Size for shared_ptr",
+              "description": "Check size for use of shared_ptr."
+            },
+            {
+              "test": "CacheTests.step4_test_results",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers."
+            },
+            {
+              "test": "CacheTests.step4_test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items."
+            },
+            {
+              "test": "CacheTests.step4_test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy."
+            }           
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "step4_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "step4_cache_tests"
+            }
+          ]
+        },
+        {
+          "skippable": true,
+          "name": "Step5Cache",
+          "dir": "step5_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.step5_test_memory_cache",
+              "name": "Memory Pool",
+              "description": "Memory pool returns memory addresses."
+            },
+            {
+              "test": "CacheTests.step5_test_size_for_vector_shared_ptr",
+              "name": "Using std::vector",
+              "description": "Check std::vector of shared_ptr is used by SquareCache."
+            },
+            {
+              "test": "CacheTests.step5_test_results",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers."
+            },
+            {
+              "test": "CacheTests.step5_test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items."
+            },
+            {
+              "test": "CacheTests.step5_test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy."
+            }           
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "step5_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "step5_cache_tests"
+            }
+          ]
+        },
+        {
           "name": "Final Cache",
           "dir": "final_cache",
           "initialFiles": ["test_output.txt","test_output2.txt","test_input.txt","main.cpp", "caches.h"],

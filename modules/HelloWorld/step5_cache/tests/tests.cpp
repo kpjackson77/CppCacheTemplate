@@ -4,31 +4,18 @@
 #include <sstream>
 #include <fstream>
 #include <algorithm>
+#include <memory>
+// #include <sys/resource.h>
+
 #include "../../../include/utilities.h"
 namespace local
 {
 #include "../exercise/main.cpp"
 }
 std::string getStdoutFromCommand(const std::string &command) {
-  std::string result = "";
-  //char buffer[128];
+        std::string result = "";
 
-// #ifdef _WIN32
-//   std::unique_ptr<FILE, decltype(&_pclose)> pipe(_popen(command.c_str(), "r"),
-//                                                  _pclose);
-// #else
-//   std::unique_ptr<FILE, decltype(&pclose)> pipe(popen(command.c_str(), "r"),
-//                                                 pclose);
-// #endif
-
-//   if (!pipe) {
-//     throw std::runtime_error("popen() failed!");
-//   }
-
-//   while (fgets(buffer, sizeof(buffer), pipe.get()) != nullptr) {
-//     result += buffer;
-//   }
-std::stringstream buffer;
+        std::stringstream buffer;
         std::streambuf *oldCout = std::cout.rdbuf(buffer.rdbuf()); // Redirect cout
 
         local::main();
@@ -56,40 +43,67 @@ std::string trim(const std::string &str) { return trimRight(trimLeft(str)); }
 
 namespace Test {
 
-    TEST(CacheTests, step2_test_success)
+    TEST(CacheTests, step5_test_success)
     {
       ASSERT_TRUE(true);
     }
-    TEST(CacheTests, step2_test_too_many_items)
+    TEST(CacheTests, step5_test_too_many_items)
     {
       using local::caches::SquareCache;
       {
-          SquareCache sc{};
+          SquareCache<int> sc{};
           ASSERT_EQ( sc.get_square(0), 0);
             
           ASSERT_EQ( sc.get_square(1), 1);
              
-          EXPECT_THROW( sc.get_square(10000), std::out_of_range);
+          EXPECT_THROW( sc.get_square(10000), std::out_of_range); 
       }
     }
-    TEST(CacheTests, step2_test_memory_cache)
+    TEST(CacheTests, step5_test_size_for_vector_shared_ptr)
+    {
+      using local::caches::MemoryPool;
+      using local::caches::SquareCache;
+      {
+          SquareCache<int,10> sc{};
+          auto vec = std::vector<std::shared_ptr<int>>(10);
+          ASSERT_EQ( sizeof(sc), sizeof(vec)+sizeof(MemoryPool<int, 10*sizeof(int)>));
+      }
+    }
+    // TEST(CacheTests, step5_test_stack_size)
+    // {
+    //   using local::caches::SquareCache;
+    //   {
+    //       SquareCache<int> sc{};
+    //       struct rlimit limit;
+    //       getrlimit(RLIMIT_STACK, &limit);
+    //       std::cout << "Current stack size: " << limit.rlim_cur << std::endl;
+    //       ASSERT_TRUE( limit.rlim_cur < 50* 1024) << "Stack size: " << limit.rlim_cur<< " bytes.";  
+    //   }
+    // }
+    TEST(CacheTests, step5_test_memory_cache)
     {
       using local::caches::MemoryPool;
       {
-          MemoryPool mp{};
+          MemoryPool<int> mp{};
 
           long ptr1 = reinterpret_cast<long>(mp.get_next());
           long ptr2 = reinterpret_cast<long>(mp.get_next());
           ASSERT_EQ( ptr2-ptr1, sizeof(int));            
       }
-    }
+      {
+          MemoryPool<long long> mp{};
 
-    TEST(CacheTests, step2_test_square_cache)
+          long ptr1 = reinterpret_cast<long>(mp.get_next());
+          long ptr2 = reinterpret_cast<long>(mp.get_next());
+          ASSERT_EQ( ptr2-ptr1, sizeof(long long));            
+      }
+    }
+    TEST(CacheTests, step5_test_square_cache)
     {
       using local::caches::SquareCache;
       {
         try {
-          SquareCache sc{};
+          SquareCache<int> sc{};
           ASSERT_EQ( sc.get_square(3), 9)
               << "Expected square of 3 to be 9, but got: "
               << sc.get_square(3);
@@ -102,8 +116,7 @@ namespace Test {
         }
       }
     }
-   
-    TEST(CacheTests, step2_test_results)
+    TEST(CacheTests, step5_test_results)
     {
         using std::string_literals::operator"" s;
         //std::string data_in{"i\nAAA\n123\no\n\ni\nBBB\n234\no\nx"s};
@@ -131,21 +144,5 @@ namespace Test {
                                     // ASSERT_FALSE(true) << output << std::endl;
                                 });
   }
-  // TEST(CacheTests, final_cache) {
-  //  std::string program_path = "hello_world";
-  //  std::string output = getStdoutFromCommand(program_path);
 
-  // // char cwd[PATH_MAX];
-  // // if (getcwd(cwd, sizeof(cwd)) != NULL) {
-  // //   std::cout << "Current working directory: " << cwd << std::endl;
-  // // } else {
-  // //   perror("getcwd() error");
-  // // }
-  // ASSERT_TRUE(trim(output).find("Square of 3: 9") != -1);
-  
-  // // ASSERT_EQ(trim(output), "Square of 3: 9")
-  // //     << "Program output should contain 'Square of 3: 9'. Actual output:\n"
-  // //     << output;
-  // // ASSERT_EQ(1,2);
-  // }
 } // namespace Test
