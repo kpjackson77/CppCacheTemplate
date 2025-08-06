@@ -20,4 +20,6 @@ target_include_directories(utilities PUBLIC include)
 
 add_subdirectory(modules/HelloWorld/step1_helloworld)
 add_subdirectory(modules/HelloWorld/step1_cache)
+add_subdirectory(modules/HelloWorld/step2_cache)
+add_subdirectory(modules/HelloWorld/step3_cache)
 add_subdirectory(modules/HelloWorld/final_cache)

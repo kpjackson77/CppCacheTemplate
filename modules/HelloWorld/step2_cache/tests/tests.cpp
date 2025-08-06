@@ -55,55 +55,12 @@ std::string trimRight(const std::string &str) {
 std::string trim(const std::string &str) { return trimRight(trimLeft(str)); }
 
 namespace Test {
-  // TEST(CacheTests, test_copy_from_input_to_output)
-  //   {
-  //    // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt");
-  //    std::ifstream ifs("../../../../../../modules/HelloWorld/final_cache/exercise/test_input.txt");
-  //    std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output.txt");
-  //     if (!ofs) {
-  //       FAIL() << "Failed to open output file.";
-  //     }   
-  //     if (!ifs) {
-  //       FAIL() << "Failed to open input file.";
-  //     }
-  //     while(!ifs.eof())
-  //     {
-  //       char line[100];
-  //       ifs.getline(line, sizeof(line), '\n');
 
-  //       ofs << line << std::endl;
-  //     }
-  //     ifs.close();
-  //     ofs.close();
-  //   }
-    // TEST(CacheTests, test_write_to_file2)
-    // {   
-    //   using std::string_literals::operator"" s;
-
-    //  // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt"); 
-    //     utilities::run_sequence(local::main, [=](std::istringstream &buffer)
-    //                             {
-    //                                 //buffer.str(data_in);
-    //                                 buffer.clear(); },
-    //                             [=](const std::string &output)
-    //                             {
-    //                                 std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output2.txt");
-    //                                 if (!ofs) {
-    //                                   FAIL() << "Failed to open output file.";
-    //                                 }
-
-    //                                 ofs << output << std::endl;
-    //                                 ofs.close();
-    //                                 std::vector<std::string> data_out = std::vector{""s};
-                                   
-    //                                 // ASSERT_FALSE(true) << output << std::endl;
-    //                             });
-    // }
-    TEST(CacheTests, step1_test_success)
+    TEST(CacheTests, step2_test_success)
     {
       ASSERT_TRUE(true);
     }
-    TEST(CacheTests, step1_test_too_many_items)
+    TEST(CacheTests, step2_test_too_many_items)
     {
       using local::caches::SquareCache;
       {
@@ -113,10 +70,20 @@ namespace Test {
           ASSERT_EQ( sc.get_square(1), 1);
              
           EXPECT_THROW( sc.get_square(10000), std::out_of_range);
-            
       }
     }
-    TEST(CacheTests, step1_test_square_cache)
+    TEST(CacheTests, step2_test_memory_cache)
+    {
+      using local::caches::MemoryPool;
+      {
+          MemoryPool mp{};
+
+          long ptr1 = reinterpret_cast<long>(mp.get_next());
+          long ptr2 = reinterpret_cast<long>(mp.get_next());
+          ASSERT_EQ( ptr2-ptr1, sizeof(int));            
+      }
+    }
+    TEST(CacheTests, step2_test_square_cache)
     {
       using local::caches::SquareCache;
       {
@@ -134,8 +101,8 @@ namespace Test {
         }
       }
     }
-    //substringsAppearInOrder
-    TEST(CacheTests, step1_test_results)
+   
+    TEST(CacheTests, step2_test_results)
     {
         using std::string_literals::operator"" s;
         //std::string data_in{"i\nAAA\n123\no\n\ni\nBBB\n234\no\nx"s};
@@ -163,21 +130,21 @@ namespace Test {
                                     // ASSERT_FALSE(true) << output << std::endl;
                                 });
   }
-  TEST(CacheTests, final_cache) {
-   std::string program_path = "hello_world";
-   std::string output = getStdoutFromCommand(program_path);
+  // TEST(CacheTests, final_cache) {
+  //  std::string program_path = "hello_world";
+  //  std::string output = getStdoutFromCommand(program_path);
 
-  // char cwd[PATH_MAX];
-  // if (getcwd(cwd, sizeof(cwd)) != NULL) {
-  //   std::cout << "Current working directory: " << cwd << std::endl;
-  // } else {
-  //   perror("getcwd() error");
-  // }
-  ASSERT_TRUE(trim(output).find("Square of 3: 9") != -1);
+  // // char cwd[PATH_MAX];
+  // // if (getcwd(cwd, sizeof(cwd)) != NULL) {
+  // //   std::cout << "Current working directory: " << cwd << std::endl;
+  // // } else {
+  // //   perror("getcwd() error");
+  // // }
+  // ASSERT_TRUE(trim(output).find("Square of 3: 9") != -1);
   
-  // ASSERT_EQ(trim(output), "Square of 3: 9")
-  //     << "Program output should contain 'Square of 3: 9'. Actual output:\n"
-  //     << output;
-  // ASSERT_EQ(1,2);
-  }
+  // // ASSERT_EQ(trim(output), "Square of 3: 9")
+  // //     << "Program output should contain 'Square of 3: 9'. Actual output:\n"
+  // //     << output;
+  // // ASSERT_EQ(1,2);
+  // }
 } // namespace Test

@@ -10,6 +10,7 @@
       "dir": "HelloWorld",
       "exercises": [
         {
+          "skippable": true,
           "name": "Hello World",
           "dir": "step1_helloworld",
           "initialFiles": ["main.cpp"],
@@ -31,30 +32,26 @@
           ]
         },
         {
+          "skippable": true,
           "name": "Step1Cache",
           "dir": "step1_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
             {
-              "test": "CacheTests.test_success",
-              "name": "Check success",
-              "description": "Success"
-            },
-            {
-              "test": "CacheTests.test_too_many_items",
-              "name": "Check too many items in cache",
-              "description": "Ensure cache reports too many items"
-            },
-            {
-              "test": "CacheTests.test_square_cache",
-              "name": "Check square cache",
-              "description": "Ensure cache works with square power policy"
-            },
-            {
-              "test": "CacheTests.test_results",
+              "test": "CacheTests.step1_test_results",
               "name": "Prints powers",
-              "description": "Ensure the program prints multiple powers of numbers"
-            }
+              "description": "Ensure the program prints multiple powers of numbers."
+            },
+            {
+              "test": "CacheTests.step1_test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items."
+            },
+            {
+              "test": "CacheTests.step1_test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy."
+            }           
           ],
           "options": [
             { "language": "cpp", "testTarget": "step1_cache_tests" }
@@ -63,6 +60,80 @@
             {
               "language": "cpp",
               "target": "step1_cache_tests"
+            }
+          ]
+        },
+        {
+          "skippable": true,
+          "name": "Step2Cache",
+          "dir": "step2_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.step2_test_memory_cache",
+              "name": "Memory Pool",
+              "description": "Memory pool returns memory addresses."
+            },
+            {
+              "test": "CacheTests.step2_test_results",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers."
+            },
+            {
+              "test": "CacheTests.step2_test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items."
+            },
+            {
+              "test": "CacheTests.step2_test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy."
+            }           
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "step2_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "step2_cache_tests"
+            }
+          ]
+        },
+        {
+          "skippable": true,
+          "name": "Step3Cache",
+          "dir": "step3_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.step3_test_memory_cache",
+              "name": "Memory Pool",
+              "description": "Memory pool returns memory addresses."
+            },
+            {
+              "test": "CacheTests.step3_test_results",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers."
+            },
+            {
+              "test": "CacheTests.step3_test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items."
+            },
+            {
+              "test": "CacheTests.step3_test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy."
+            }           
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "step3_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "step3_cache_tests"
             }
           ]
         },
