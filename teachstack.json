@@ -33,7 +33,7 @@
         },
         {
           "skippable": true,
-          "name": "Step1Cache",
+          "name": "Create Cache",
           "dir": "step1_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
@@ -65,7 +65,7 @@
         },
         {
           "skippable": true,
-          "name": "Step2Cache",
+          "name": "Add Memory Pool",
           "dir": "step2_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
@@ -102,7 +102,7 @@
         },
         {
           "skippable": true,
-          "name": "Step3Cache",
+          "name": "Template Cache",
           "dir": "step3_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
@@ -139,7 +139,7 @@
         },
         {
           "skippable": true,
-          "name": "Step4Cache",
+          "name": "Shared Pointer",
           "dir": "step4_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
@@ -181,7 +181,7 @@
         },
         {
           "skippable": true,
-          "name": "Step5Cache",
+          "name": "Vector",
           "dir": "step5_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [

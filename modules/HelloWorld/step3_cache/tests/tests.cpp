@@ -40,10 +40,6 @@ std::string trim(const std::string &str) { return trimRight(trimLeft(str)); }
 
 namespace Test {
 
-    TEST(CacheTests, step3_test_success)
-    {
-      ASSERT_TRUE(true);
-    }
     TEST(CacheTests, step3_test_too_many_items)
     {
       using local::caches::SquareCache;
