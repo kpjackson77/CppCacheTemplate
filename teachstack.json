@@ -222,15 +222,52 @@
           ]
         },
         {
+          "skippable": true,
+          "name": "Vector",
+          "dir": "step6_cache",
+          "initialFiles": ["main.cpp", "caches.h"],
+          "tests": [
+            {
+              "test": "CacheTests.step6_test_memory_cache",
+              "name": "Memory Pool",
+              "description": "Memory pool returns memory addresses."
+            },
+            {
+              "test": "CacheTests.step6_test_size_for_map_shared_ptr",
+              "name": "Using std::vector",
+              "description": "Check std::vector of shared_ptr is used by SquareCache."
+            },
+            {
+              "test": "CacheTests.step6_test_results",
+              "name": "Prints powers",
+              "description": "Ensure the program prints multiple powers of numbers."
+            },
+            {
+              "test": "CacheTests.step6_test_too_many_items",
+              "name": "Check too many items in cache",
+              "description": "Ensure cache reports too many items."
+            },
+            {
+              "test": "CacheTests.step6_test_square_cache",
+              "name": "Check square cache",
+              "description": "Ensure cache works with square power policy."
+            }           
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "step6_cache_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "step6_cache_tests"
+            }
+          ]
+        },
+        {
           "name": "Final Cache",
           "dir": "final_cache",
           "initialFiles": ["test_output.txt","test_output2.txt","test_input.txt","main.cpp", "caches.h"],
           "tests": [
-            {
-              "test": "CacheTests.copy_from_input_to_output",
-              "name": "Check copy between files",
-              "description": "Ensure copy between input and output files works"
-            },
             {
               "test": "CacheTests.test_write_to_file",
               "name": "Check write to file",
@@ -265,26 +302,6 @@
               "test": "CacheTests.final_cache",
               "name": "Prints powers",
               "description": "Ensure the program prints multiple powers of numbers"
-            },
-            {
-              "test": "CacheTests.test_success",
-              "name": "Just a check",
-              "description": "Check that the test framework is working"
-            },
-            {
-              "test": "CacheTests.test_fail",
-              "name": "Just a check",
-              "description": "Check that the test framework is working"
-            },
-            {
-              "test": "CacheTests.test_success2",
-              "name": "Just a check",
-              "description": "Check that the test framework is working"
-            },
-            {
-              "test": "CacheTests.test_fail2",
-              "name": "Just a check",
-              "description": "Check that the test framework is working"
             }
           ],
           "options": [

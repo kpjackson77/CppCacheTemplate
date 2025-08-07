@@ -37,23 +37,17 @@ namespace caches
 		mutable std::map<size_t,std::shared_ptr<T>> _data;
 		MemoryPool<T, SIZE * sizeof(T)> _pool;
 	public:
-		PowerCache()  {
-			//_data.reserve(SIZE);
-			//for (size_t i = 0; i < SIZE; ++i) {//sizeof(_data) / sizeof(int*); i++) {
-			//	_data.push_back(nullptr);
-			//}
-		}
+		PowerCache()  {	}
 		std::optional<T> get_power(size_t ind) const {
-			//if (ind >= sizeof(_data) / sizeof(T*))throw std::out_of_range{ "Too many items" };
+		
 			if (ind >= SIZE) throw std::out_of_range{ "Outside range for data!" };
-			//if (_data[ind] == nullptr) {
+
 			if( _data.find(ind) == _data.end()){
-				//const_cast<int&>(_data[ind]) = ind * ind;
+
 				_data[ind] = std::shared_ptr<T>{ new (_pool.get_next()) T { Policy<T>::get_power(static_cast<int>(ind))},[](T* p){p->~T();}};//MyDeleter{}};//my_deleter };
 				std::cout << "Computing the square of " << ind << std::endl;
 			}
 			return *_data[ind];
 		}
-		//int get_something();
 	};
 }
