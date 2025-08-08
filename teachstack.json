@@ -223,7 +223,7 @@
         },
         {
           "skippable": true,
-          "name": "Vector",
+          "name": "Map",
           "dir": "step6_cache",
           "initialFiles": ["main.cpp", "caches.h"],
           "tests": [
@@ -234,8 +234,8 @@
             },
             {
               "test": "CacheTests.step6_test_size_for_map_shared_ptr",
-              "name": "Using std::vector",
-              "description": "Check std::vector of shared_ptr is used by SquareCache."
+              "name": "Using std::map",
+              "description": "Check std::map of shared_ptr is used by SquareCache."
             },
             {
               "test": "CacheTests.step6_test_results",
@@ -286,11 +286,6 @@
             {
               "test": "CacheTests.test_power_results",
               "name": "Check computation of Powers",
-              "description": "Ensure the program prints multiple powers of numbers"
-            },
-            {
-              "test": "CacheTests.final_cache",
-              "name": "Prints powers",
               "description": "Ensure the program prints multiple powers of numbers"
             }
           ],

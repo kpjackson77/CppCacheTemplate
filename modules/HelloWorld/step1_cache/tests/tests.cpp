@@ -99,10 +99,6 @@ namespace Test {
     //                                 // ASSERT_FALSE(true) << output << std::endl;
     //                             });
     // }
-    TEST(CacheTests, step1_test_success)
-    {
-      ASSERT_TRUE(true);
-    }
     TEST(CacheTests, step1_test_too_many_items)
     {
       using local::caches::SquareCache;
