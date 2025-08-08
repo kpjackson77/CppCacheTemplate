@@ -65,17 +65,6 @@ namespace Test {
           ASSERT_EQ( sizeof(sc), sizeof(map)+sizeof(MemoryPool<int, 10*sizeof(int)>));
       }
     }
-    // TEST(CacheTests, step5_test_stack_size)
-    // {
-    //   using local::caches::SquareCache;
-    //   {
-    //       SquareCache<int> sc{};
-    //       struct rlimit limit;
-    //       getrlimit(RLIMIT_STACK, &limit);
-    //       std::cout << "Current stack size: " << limit.rlim_cur << std::endl;
-    //       ASSERT_TRUE( limit.rlim_cur < 50* 1024) << "Stack size: " << limit.rlim_cur<< " bytes.";  
-    //   }
-    // }
     TEST(CacheTests, step6_test_memory_cache)
     {
       using local::caches::MemoryPool;

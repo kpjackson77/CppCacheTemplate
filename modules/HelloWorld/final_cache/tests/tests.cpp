@@ -192,21 +192,5 @@ namespace Test {
                                     // ASSERT_FALSE(true) << output << std::endl;
                                 });
   }
-  // TEST(CacheTests, final_cache) {
-  //  std::string program_path = "hello_world";
-  //  std::string output = getStdoutFromCommand(program_path);
 
-  // // char cwd[PATH_MAX];
-  // // if (getcwd(cwd, sizeof(cwd)) != NULL) {
-  // //   std::cout << "Current working directory: " << cwd << std::endl;
-  // // } else {
-  // //   perror("getcwd() error");
-  // // }
-  // ASSERT_TRUE(trim(output).find("Square of 3: 9") != -1);
-  
-  // // ASSERT_EQ(trim(output), "Square of 3: 9")
-  // //     << "Program output should contain 'Square of 3: 9'. Actual output:\n"
-  // //     << output;
-  // // ASSERT_EQ(1,2);
-  // }
 } // namespace Test
