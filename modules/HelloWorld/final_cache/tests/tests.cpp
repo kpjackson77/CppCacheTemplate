@@ -55,61 +55,61 @@ std::string trimRight(const std::string &str) {
 std::string trim(const std::string &str) { return trimRight(trimLeft(str)); }
 
 namespace Test {
-  TEST(CacheTests, test_copy_from_input_to_output)
-    {
-     // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt");
-     std::ifstream ifs("../../../../../../modules/HelloWorld/final_cache/exercise/test_input.txt");
-     std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output.txt");
-      if (!ofs) {
-        FAIL() << "Failed to open output file.";
-      }   
-      if (!ifs) {
-        FAIL() << "Failed to open input file.";
-      }
-      while(!ifs.eof())
-      {
-        char line[100];
-        ifs.getline(line, sizeof(line), '\n');
+  // TEST(CacheTests, test_copy_from_input_to_output)
+  //   {
+  //    // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt");
+  //    std::ifstream ifs("../../../../../../modules/HelloWorld/final_cache/exercise/test_input.txt");
+  //    std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output.txt");
+  //     if (!ofs) {
+  //       FAIL() << "Failed to open output file.";
+  //     }   
+  //     if (!ifs) {
+  //       FAIL() << "Failed to open input file.";
+  //     }
+  //     while(!ifs.eof())
+  //     {
+  //       char line[100];
+  //       ifs.getline(line, sizeof(line), '\n');
 
-        ofs << line << std::endl;
-      }
-      ifs.close();
-      ofs.close();
-    }
-    TEST(CacheTests, test_write_to_file2)
-    {   
-      using std::string_literals::operator"" s;
+  //       ofs << line << std::endl;
+  //     }
+  //     ifs.close();
+  //     ofs.close();
+  //   }
+  //   TEST(CacheTests, test_write_to_file2)
+  //   {   
+  //     using std::string_literals::operator"" s;
 
-     // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt"); 
-        utilities::run_sequence(local::main, [=](std::istringstream &buffer)
-                                {
-                                    //buffer.str(data_in);
-                                    buffer.clear(); },
-                                [=](const std::string &output)
-                                {
-                                    std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output2.txt");
-                                    if (!ofs) {
-                                      FAIL() << "Failed to open output file.";
-                                    }
+  //    // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt"); 
+  //       utilities::run_sequence(local::main, [=](std::istringstream &buffer)
+  //                               {
+  //                                   //buffer.str(data_in);
+  //                                   buffer.clear(); },
+  //                               [=](const std::string &output)
+  //                               {
+  //                                   std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output2.txt");
+  //                                   if (!ofs) {
+  //                                     FAIL() << "Failed to open output file.";
+  //                                   }
 
-                                    ofs << output << std::endl;
-                                    ofs.close();
-                                    std::vector<std::string> data_out = std::vector{""s};
+  //                                   ofs << output << std::endl;
+  //                                   ofs.close();
+  //                                   std::vector<std::string> data_out = std::vector{""s};
                                    
-                                    // ASSERT_FALSE(true) << output << std::endl;
-                                });
-    }
-    TEST(CacheTests, test_write_to_file)
-    {
+  //                                   // ASSERT_FALSE(true) << output << std::endl;
+  //                               });
+  //   }
+  //   TEST(CacheTests, test_write_to_file)
+  //   {
       
-     // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt");
-    //  std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output.txt");
-    //   if (!ofs) {
-    //     FAIL() << "Failed to open output file.";
-    //   }
-    //   ofs << "Another test!" << std::endl;
-    //   ofs.close();
-    }
+  //    // std::ofstream ofs("../../../../HelloWorld/final_cache/exercise/test_output.txt");
+  //   //  std::ofstream ofs("../../../../../../modules/HelloWorld/final_cache/exercise/test_output.txt");
+  //   //   if (!ofs) {
+  //   //     FAIL() << "Failed to open output file.";
+  //   //   }
+  //   //   ofs << "Another test!" << std::endl;
+  //   //   ofs.close();
+  //   }
   TEST(CacheTests, test_too_many_items)
     {
       using local::caches::PowerCache;
@@ -191,18 +191,6 @@ namespace Test {
                                     }
                                     // ASSERT_FALSE(true) << output << std::endl;
                                 });
-  }
-  TEST(CacheTests, test_success) {
-    ASSERT_NE(1, 2) << "This test should succeed.";
-  }
-  TEST(CacheTests, test_fail) {
-    ASSERT_NE(1, 1) << "This test shouldfail.";
-  }
-    TEST(CacheTests, test_success2) {
-    ASSERT_NE(1, 2) << "This test should succeed.";
-  }
-  TEST(CacheTests, test_fail2) {
-    ASSERT_NE(1, 1) << "This test shouldfail.";
   }
   TEST(CacheTests, final_cache) {
    std::string program_path = "hello_world";

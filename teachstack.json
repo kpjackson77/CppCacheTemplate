@@ -264,20 +264,10 @@
           ]
         },
         {
-          "name": "Final Cache",
+          "name": "Policy Based Design",
           "dir": "final_cache",
           "initialFiles": ["test_output.txt","test_output2.txt","test_input.txt","main.cpp", "caches.h"],
           "tests": [
-            {
-              "test": "CacheTests.test_write_to_file",
-              "name": "Check write to file",
-              "description": "Ensure write to file"
-            },
-            {
-              "test": "CacheTests.test_write_to_file2",
-              "name": "Check write to file",
-              "description": "Ensure write to file"
-            },
             {
               "test": "CacheTests.test_too_many_items",
               "name": "Check too many items in cache",
