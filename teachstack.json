@@ -11,6 +11,65 @@
       "exercises": [
         {
           "skippable": true,
+          "name": "Max Function",
+          "dir": "first_templates",
+          "initialFiles": ["main.cpp"],
+          "tests": [
+            {
+              "test": "TemplateTests.step1_templates",
+              "name": "Calculate maximum",
+              "description": "Checks my_max function works with different types."
+            },
+            {
+              "test": "TemplateTests.step1_check_templates",
+              "name": "Check template function",
+              "description": "Checks my_max is a template function."
+            }
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "first_templates_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "first_templates_tests"
+            }
+          ]
+        },
+        {
+          "skippable": true,
+          "name": "Function Specialisation",
+          "dir": "specialisation_templates",
+          "initialFiles": ["main.cpp"],
+          "tests": [
+            {
+              "test": "TemplateTests.step2_templates",
+              "name": "Calculate maximum",
+              "description": "Checks my_max function works with different types."
+            },
+            {
+              "test": "TemplateTests.step2_check_templates",
+              "name": "Check template function",
+              "description": "Checks my_max is a template function."
+            },
+            {
+              "test": "TemplateTests.step2_check_specialisation_templates",
+              "name": "Check template function",
+              "description": "Checks my_max is a template function."
+            }
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "specialisation_templates_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "specialisation_templates_tests"
+            }
+          ]
+        },
+        {
+          "skippable": true,
           "name": "Hello World",
           "dir": "step1_helloworld",
           "initialFiles": ["main.cpp"],
@@ -28,6 +87,33 @@
             {
               "language": "cpp",
               "target": "step1_helloworld_tests"
+            }
+          ]
+        },
+        {
+          "skippable": true,
+          "name": "Class New",
+          "dir": "class_new",
+          "initialFiles": ["main.cpp"],
+          "tests": [
+            {
+              "test": "MemoryTests.test_call_new",
+              "name": "Calls to new and delete",
+              "description": "Checks allocation and deallocation."
+            },
+            {
+              "test": "MemoryTests.test_check_new_and_delete",
+              "name": "Check new and delete operators",
+              "description": "Checks for operators."
+            }
+          ],
+          "options": [
+            { "language": "cpp", "testTarget": "class_new_tests" }
+          ],
+          "scripts": [
+            {
+              "language": "cpp",
+              "target": "class_new_tests"
             }
           ]
         },
